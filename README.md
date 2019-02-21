@@ -42,6 +42,12 @@ During `initialize`, the module creates an in-memory sqlite3 database of known-b
 
 The `botstopper` function accepts an `options` object and returns an ExpressJS middleware function that can be added to your application's processing chain using `app.use`.
 
+### options.auditRequest : function
+
+If specified, this function will be called with each known-malicious request received. This gives the developer the opportunity to process the information and perhaps take additional action such as auto-banning the IP address or authenticated user.
+
+The function must return a Promise that resolves once auditing work is completed. If an object is resolved, it will be sent in JSON format to the client.
+
 ## Auditing Requests
 
 The botstopper alone is enough to block common requests, but it's only step one. Commonly, you will also want some request auditing functionality to report on these requests when they are detected. To facilitate this (and not knowing your environment) botstopper will call a callback you register in the options as `auditRequest`.

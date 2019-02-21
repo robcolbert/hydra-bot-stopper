@@ -55,17 +55,31 @@ module.exports.urlblocker = (options = { }) => {
       if (result.count === 0) {
         return next();
       }
-      var viewModel = { };
-      var jobs = [ ];
+
+      var viewModel = { status: 403, action: 'Request Quarantined' };
+      var jobs = [ ], job;
 
       if (options.auditRequest && (typeof options.auditRequest === 'function')) {
-        jobs.push(options.auditRequest(req).then((audit) => { viewModel.audit = audit; }));
+        job = options
+        .auditRequest(req)
+        .then((audit) => {
+          if (audit) {
+            viewModel.action = 'Request Audited and Quarantined';
+            viewModel.details = 'A request for a known-malicious URL has been detected, quarantined, audited, and aborted.';
+            viewModel.audit = audit;
+          } else {
+            viewModel.details = 'A request for a known-malicious URL has been detected, quarantined, and aborted.';
+          }
+        });
+        jobs.push(job);
       }
 
       Promise
       .all(jobs)
       .then(( ) => {
-        return res.status(200).json(viewModel);
+        return res.status(403).json({
+          report: viewModel
+        });
       })
       .catch(next);
     });
