@@ -1,0 +1,29 @@
+{
+  "name": "hydra-bot-stopper",
+  "version": "0.1.0",
+  "description": "HYDRA Bot Stopper middleware with sqlite3-based URL blocking",
+  "main": "hydra-module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robcolbert/hydra-bot-stopper.git"
+  },
+  "keywords": [
+    "gab",
+    "hydra",
+    "bot",
+    "security",
+    "defense"
+  ],
+  "author": "Gab AI, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robcolbert/hydra-bot-stopper/issues"
+  },
+  "homepage": "https://github.com/robcolbert/hydra-bot-stopper#readme",
+  "dependencies": {
+    "sqlite3": "^4.0.6"
+  }
+}
