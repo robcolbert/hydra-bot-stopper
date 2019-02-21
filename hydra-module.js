@@ -8,44 +8,6 @@ const fs = require('fs');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 
-module.exports.urlblocker = (options = { }) => {
-
-  var defaults = {
-    guardedUrls: [ ]
-  };
-
-  options = Object.assign(defaults, options);
-
-  return (req, res, next) => {
-    if (!module.db) {
-      return next();
-    }
-
-    module.db.get('SELECT COUNT(*) AS count FROM urls WHERE url = ?', req.url, (err, rows) => {
-      console.log('QUERY RESULT', { err: err, rows: rows });
-    });
-
-    if (!options.guardedUrls.includes(req.url.toLowerCase())) {
-      return next();
-    }
-
-    var viewModel = { };
-    var jobs = [ ];
-
-    if (options.auditRequest && (typeof options.auditRequest === 'function')) {
-      jobs.push(options.auditRequest(req).then((audit) => { viewModel.audit = audit; }));
-    }
-
-    Promise
-    .all(jobs)
-    .then(( ) => {
-      return res.status(200).json(viewModel);
-    })
-    .catch(next);
-  };
-
-};
-
 module.exports.initialize = ( ) => {
   return new Promise((resolve, reject) => {
     const dataFilename = path.join(__dirname, 'data', 'urls.txt');
@@ -68,12 +30,44 @@ module.exports.initialize = ( ) => {
             stmt.run(url);
           });
           stmt.finalize();
-
-          return resolve();
         });
+        return resolve();
       } catch (error) {
         return reject(error);
       }
     });
   });
+};
+
+module.exports.urlblocker = (options = { }) => {
+  var defaults = {
+    guardedUrls: [ ]
+  };
+
+  options = Object.assign(defaults, options);
+
+  return (req, res, next) => {
+    if (!module.db) {
+      return next();
+    }
+
+    module.db.get('SELECT COUNT(*) AS count FROM urls WHERE url = ?', req.url, (err, result) => {
+      if (result.count === 0) {
+        return next();
+      }
+      var viewModel = { };
+      var jobs = [ ];
+
+      if (options.auditRequest && (typeof options.auditRequest === 'function')) {
+        jobs.push(options.auditRequest(req).then((audit) => { viewModel.audit = audit; }));
+      }
+
+      Promise
+      .all(jobs)
+      .then(( ) => {
+        return res.status(200).json(viewModel);
+      })
+      .catch(next);
+    });
+  };
 };
