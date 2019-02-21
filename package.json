@@ -1,6 +1,6 @@
 {
   "name": "hydra-bot-stopper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HYDRA Bot Stopper middleware with sqlite3-based URL blocking",
   "main": "hydra-module.js",
   "scripts": {
