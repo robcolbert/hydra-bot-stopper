@@ -1,5 +1,6 @@
 /12.php
 /1213.php
+/1494b744.php
 /1hou.php
 /3.php
 /56.php
@@ -20,9 +21,11 @@
 /appserv.php
 /bak.php
 /boots.php
+/cacti/plugins/weathermap/editor.php
 /cainiao.php
 /caonma.php
 /ceshi.php
+/claroline/phpmyadmin/index.php
 /cmd.php
 /cmdd.php
 /cmv.php
@@ -48,6 +51,7 @@
 /help.php
 /hh.php
 /hm.php
+/htdocs.php
 /html/public/index.php
 /index.php
 /infoo.php
@@ -65,19 +69,24 @@
 /log.php
 /logon.php
 /lol.php
+/m.php?pbid=open
 /manager/html
 /miao.php
 /min.php
 /muhstik-dpr.php
+/muhstik.php
 /muhstik2.php
+/muhstiks.php
 /mx.php
 /myadmin/index.php
 /myadmin2/index.php
 /mysql-admin/index.php
 /mysql/admin/index.php
+/mysql/dbadmin/index.php
 /mysql/index.php
 /mysql/mysqlmanager/index.php
 /mysql/sqlmanager/index.php
+/mysql_admin/index.php
 /mysqladmin/index.php
 /mz.php
 /ou2.php
@@ -86,6 +95,7 @@
 /phpinfi.php
 /phpma/index.php
 /phpmy/index.php
+/phpmyabmin/index.php
 /phpmyadm1n/index.php
 /phpmyadmi/index.php
 /phpmyadmin+++---/index.php
@@ -104,6 +114,7 @@
 /phpmyadmin_bak/index.php
 /phpmyadmina/index.php
 /phpmyadminold/index.php
+/phpmyadmins/index.php
 /phpmyadmion/index.php
 /phpmydmin/index.php
 /phppma/index.php
@@ -117,6 +128,7 @@
 /pmd/index.php
 /pmd_online.php
 /post.php
+/program/index.php
 /public/index.php
 /pwd/index.php
 /python.php
@@ -126,6 +138,7 @@
 /qw.php
 /qwe.php
 /s.php
+/s/index.php
 /scripts/setup.php
 /sean.php
 /shaadmin/index.php
@@ -134,6 +147,7 @@
 /shopdb/index.php
 /ss.php
 /test.php
+/text.php
 /thinkphp/html/public/index.php
 /tiandi.php
 /tomcat.php
@@ -147,6 +161,7 @@
 /wanan.php
 /wc.php
 /wcp.php
+/web/phpmyadmin/index.php
 /webdav/
 /webslee.php
 /weixiao.php
@@ -158,6 +173,7 @@
 /wshell.php
 /wuwu11.php
 /www/phpmyadmin/index.php
+/x.php
 /xampp/phpmyadmin/index.php
 /xiao.php
 /xshell.php
@@ -166,6 +182,7 @@
 /xx.php
 /xz.php
 /yao.php
+/z.php
 /zshmindex.php
 /zuo.php
 /zuoindex.php
